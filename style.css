@@ -1,0 +1,202 @@
+body {
+    margin: 0;
+    padding: 0;    
+    font-family: Inconsolata;
+    text-align: center;
+}
+
+.sub-heading {
+    font-size: 6vw;
+    margin: 10px;
+}
+
+.heading {
+    font-size: 8vw;
+}
+
+.text {
+    margin: 10px;
+    padding: 15px;
+    text-align: justify;
+    height: 100px;
+}
+
+form {
+    margin: 7vh 0;
+}
+
+label, input {
+    margin: 10px 5px;
+}
+
+input {
+    border: none;
+    border-bottom: 2px solid red;
+    width: 200px;
+}
+
+input:focus {
+    outline: none;
+}
+
+.button {
+    margin: 10px auto;
+    background: #BF3D6C;
+    padding: 15px;
+    height: 60px;
+    width: 200px;
+    text-align: center;
+    cursor: pointer;
+    border: none;
+    color: white;
+    font-family: 'IM Fell Great Primer';
+    border-radius: 10px;
+    box-shadow: inset 2px 1px 9px 1px white;
+    transition: .5s all;
+}
+
+.button:hover {
+    transform: scale(1.2);
+}
+
+.button:active {
+    transition: none;
+    transform: scale(0.9);
+}
+
+.button p {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    height: 30px;
+}
+
+.button .material-symbols-outlined {
+    font-size: 45px;
+}
+
+.topBar {
+    background-color: #FFD873;
+    width: calc(100% - 10px);
+    height: 37px;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.topBar span {
+    width: 70px;
+    height: 30px;
+    float: left;
+    text-align: center;
+    background-color: #FAE2A6;
+    margin: 2.5px;
+    padding: 1px;
+    font-size: 30px;
+}
+
+.topBar span img {
+    width: 30px;
+}
+
+.LevelLine {
+    width: calc(100% - 10px);
+    margin: 10px 5px;
+    border-bottom: 3px solid #FFD873;
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto auto;
+    text-align: center;
+    justify-content: center;
+}
+
+.level {
+    font-family: 'Jockey One';
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px 10px 10px 10px;
+    font-size: 25px;
+    position: relative;
+    z-index: 10;
+}
+
+.level:after {
+    content: "";
+    position: absolute;
+    top: 0px;
+    right: -10px;
+    width: 30px;
+    height: 30px;
+    background-image: url(images/lock.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 20;
+}
+
+.purple.level:after {
+    right: -35px;
+}
+
+.green {
+    width: 40px;
+    height: 40px;
+    background-color: #60DE13;
+}
+
+.blue {
+    width: 40px;
+    height: 40px;
+    background-color: #37DBFF;
+    border-radius: 50%;
+}
+
+.LevelLine.third {
+    grid-template-columns: auto auto auto;
+}
+
+.purple {
+    width: 0;
+	height: 0;
+	border-left: 40px solid transparent;
+	border-right: 40px solid transparent;
+	border-bottom: 50px solid #D06DFF;
+    position: relative;
+}
+
+.purple .levelNo {
+    margin: 0;
+    padding: 0px;
+    position: absolute;
+    bottom: -50px;
+}
+
+.golden {
+    width: 120px;
+    height: 120px;
+    background-image: url(images/level21.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: white;
+    font-size: 35px;
+}
+
+.golden.level:after {
+    width: 50px;
+    height: 50px;
+    right: -5px;
+    top: 5px;
+}
+
+@media only screen and (max-width: 450px) {
+    .LevelLine {
+        grid-template-columns: auto auto auto auto auto;
+    }
+  }
+
+@media only screen and (max-width: 300px) {
+    .LevelLine {
+        grid-template-columns: auto auto auto auto;
+    }
+  }
