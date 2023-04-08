@@ -4,8 +4,11 @@ import math
 from protobuf_to_dict import protobuf_to_dict, dict_to_protobuf
 import json
 from google.protobuf import json_format
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
+
 @app.route("/", methods=['GET', "POST"])
 
 def detect_document_uri():
@@ -29,14 +32,14 @@ def detect_document_uri():
             for page in response.full_text_annotation.pages:
                 block_confidences = []
                 LsizeCont = []
+                dataJson = {}
                 for block in page.blocks:
                     block_confidences.append(block.confidence)
                     paragraph_confidences = []
                     for paragraph in block.paragraphs:
                         paragraph_confidences.append(paragraph.confidence)
-                        
                         for word in paragraph.words: 
-                            Lsize = []
+                            Lsize = {}
                             LsizeCont.append(Lsize)
                             for symbol in word.symbols:
                                 letterX = [] 
@@ -49,12 +52,16 @@ def detect_document_uri():
                                 Ly1 = letterY[0]
                                 Ly3 = letterY[2]
                                 width = Lx2 - Lx1
-                                height = Ly3 - Ly1                
-                                Lsize.append("{}: width: {}, height: {}".format(symbol.text, width, height))
+                                height = Ly3 - Ly1  
+                                Lsize[symbol.text] = {"width": width, "height": height}
+                                dataJson["Letter-Sizes"] = LsizeCont
+                                # Lsize.append("{}: width: {}, height: {}".format(symbol.text, width, height))
                     
-                Pconf = 'Paragraph confidence: {}%'.format((math.floor(sum(paragraph_confidences) * 1000)/10)/len(paragraph_confidences))
-                Bconf = 'Block confidence: {}%'.format((math.floor(sum(block_confidences) * 1000)/10)/len(block_confidences))
-            Wsize = []
+                Pconf = math.floor(sum(paragraph_confidences) * 1000)/10/len(paragraph_confidences)
+                Bconf = math.floor(sum(block_confidences) * 1000)/10/len(block_confidences)
+                dataJson["Paragraph-Confidence"] = Pconf
+                dataJson["Block-Confidence"] = Bconf
+            Wsize = {}
             for listCounter in range(1, len(response.text_annotations)):
                 wordBounding = []
                 
@@ -62,19 +69,23 @@ def detect_document_uri():
 
                 for boundingCoord in wordData.bounding_poly.vertices:
                     wordBounding.append(boundingCoord.x)
-                Wsize.append("{}: {}".format(wordData.description, wordBounding))
+                Wsize[wordData.description] = wordBounding
+                dataJson["Word-Bounding"] = Wsize
 
             word_gap_list = []
-            Wgap = []
+            Wgap = {}
             for i in range(0, len(response.text_annotations)-1):
                 if (i > 0):
                     W1x = responseObj['textAnnotations'][i]['boundingPoly']['vertices'][1]['x']
                     W2x = responseObj['textAnnotations'][i + 1]['boundingPoly']['vertices'][0]['x']
                     word_gap = W2x - W1x
                     word_gap_list.append(word_gap)
-            Wgap.append("word gap: {}".format(word_gap_list))
+            # Wgap["Gaps"] = word_gap_list
+            dataJson["Gaps"] = word_gap_list
 
-    return [LsizeCont, Pconf, Bconf, Wsize, Wgap]
+    # dataJson = {"Letter-Sizes": Lsize, "Pconf": Pconf, "Bconf": Bconf}
+    # return [LsizeCont, Pconf, Bconf, Wsize, Wgap]
+    return dataJson
   
 if __name__ == '__main__':
     app.debug = True
