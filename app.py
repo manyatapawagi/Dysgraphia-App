@@ -40,7 +40,6 @@ def detect_document_uri():
                         paragraph_confidences.append(paragraph.confidence)
                         for word in paragraph.words:
                             
-                            # Lsize = {}
                             for symbol in word.symbols:
                                 letterX = [] 
                                 letterY = []
@@ -57,8 +56,6 @@ def detect_document_uri():
                                 
                                 LsizeCont.append(Lsize)
                                 dataJson["Letter-Sizes"] = LsizeCont
-                                # Lsize.append("{}: width: {}, height: {}".format(symbol.text, width, height))
-                    
                 Pconf = math.floor(sum(paragraph_confidences) * 1000)/10/len(paragraph_confidences)
                 Bconf = math.floor(sum(block_confidences) * 1000)/10/len(block_confidences)
                 dataJson["Paragraph-Confidence"] = Pconf
@@ -84,11 +81,7 @@ def detect_document_uri():
                     W2x = responseObj['textAnnotations'][i + 1]['boundingPoly']['vertices'][0]['x']
                     word_gap = W2x - W1x
                     word_gap_list.append(word_gap)
-            # Wgap["Gaps"] = word_gap_list
             dataJson["Gaps"] = word_gap_list
-
-    # dataJson = {"Letter-Sizes": Lsize, "Pconf": Pconf, "Bconf": Bconf}
-    # return [LsizeCont, Pconf, Bconf, Wsize, Wgap]
     return dataJson
   
 if __name__ == '__main__':
