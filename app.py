@@ -38,9 +38,9 @@ def detect_document_uri():
                     paragraph_confidences = []
                     for paragraph in block.paragraphs:
                         paragraph_confidences.append(paragraph.confidence)
-                        for word in paragraph.words: 
-                            Lsize = {}
-                            LsizeCont.append(Lsize)
+                        for word in paragraph.words:
+                            
+                            # Lsize = {}
                             for symbol in word.symbols:
                                 letterX = [] 
                                 letterY = []
@@ -53,7 +53,9 @@ def detect_document_uri():
                                 Ly3 = letterY[2]
                                 width = Lx2 - Lx1
                                 height = Ly3 - Ly1  
-                                Lsize[symbol.text] = {"width": width, "height": height}
+                                Lsize = {symbol.text: {"width": width, "height": height}}
+                                
+                                LsizeCont.append(Lsize)
                                 dataJson["Letter-Sizes"] = LsizeCont
                                 # Lsize.append("{}: width: {}, height: {}".format(symbol.text, width, height))
                     
@@ -61,7 +63,7 @@ def detect_document_uri():
                 Bconf = math.floor(sum(block_confidences) * 1000)/10/len(block_confidences)
                 dataJson["Paragraph-Confidence"] = Pconf
                 dataJson["Block-Confidence"] = Bconf
-            Wsize = {}
+            WsizeCont = []
             for listCounter in range(1, len(response.text_annotations)):
                 wordBounding = []
                 
@@ -69,8 +71,10 @@ def detect_document_uri():
 
                 for boundingCoord in wordData.bounding_poly.vertices:
                     wordBounding.append(boundingCoord.x)
-                Wsize[wordData.description] = wordBounding
-                dataJson["Word-Bounding"] = Wsize
+                Wsize = {wordData.description: wordBounding}
+
+                WsizeCont.append(Wsize)
+                dataJson["Word-Bounding"] = WsizeCont
 
             word_gap_list = []
             Wgap = {}
