@@ -74,7 +74,6 @@ def detect_document_uri():
                 dataJson["Word-Bounding"] = WsizeCont
 
             word_gap_list = []
-            Wgap = {}
             for i in range(0, len(response.text_annotations)-1):
                 if (i > 0):
                     W1x = responseObj['textAnnotations'][i]['boundingPoly']['vertices'][1]['x']
