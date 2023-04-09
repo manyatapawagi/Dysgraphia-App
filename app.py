@@ -81,6 +81,7 @@ def detect_document_uri():
                     word_gap = W2x - W1x
                     word_gap_list.append(word_gap)
             dataJson["Gaps"] = word_gap_list
+            dataJson["Full-text"] = response.text_annotations[0].description
     return dataJson
   
 if __name__ == '__main__':
