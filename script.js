@@ -23,5 +23,11 @@ fetch("http://127.0.0.1:5000/").then(
             var deviationAvPercentage = Number((100 - ((heightPercentage + widthPercentage) / 2)).toFixed(2));
             var overallScore = Number(((overallConf + deviationAvPercentage) / 2).toFixed(2));
         }
-        document.querySelector("body").innerHTML = "Neatness: " + JSON.stringify(deviationAvPercentage) + "% <br>" + "Handwriting: " + JSON.stringify(overallConf) + "% <br>" + "Overall Score: " + JSON.stringify(overallScore) + "% <br>";
+
+        var points = math.ceil(math.floor(overallConf)/5);
+        
+
+        document.querySelector("body").innerHTML = "Neatness: " + JSON.stringify(deviationAvPercentage) + "% <br>" + "Handwriting: " + JSON.stringify(overallConf) + "% <br>" + "Overall Score: " + JSON.stringify(overallScore) + "% <br>" + "points scored: " + points;
+
+
     })
