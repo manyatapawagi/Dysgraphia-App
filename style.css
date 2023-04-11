@@ -31,8 +31,11 @@ label, input {
 
 input {
     border: none;
-    border-bottom: 2px solid red;
     width: 200px;
+}
+
+input[type="text"]{
+    border-bottom: 2px solid red;
 }
 
 input:focus {
@@ -120,6 +123,8 @@ input:focus {
     font-size: 25px;
     position: relative;
     z-index: 10;
+    user-select: none;
+    cursor: pointer;
 }
 
 .level:after {
@@ -133,6 +138,10 @@ input:focus {
     background-repeat: no-repeat;
     background-size: cover;
     z-index: 20;
+}
+
+.level1:after {
+    display: none;
 }
 
 .purple.level:after {
@@ -200,3 +209,12 @@ input:focus {
         grid-template-columns: auto auto auto auto;
     }
   }
+
+#upload {
+    margin: 10px auto;
+    display: block;
+}
+
+#upload img {
+    width: 100px;
+}
