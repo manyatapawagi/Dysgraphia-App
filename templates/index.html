@@ -2,7 +2,7 @@
 
 <head>
     <title>AppName</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="static/css/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,20 +15,22 @@
 </head>
 
 <body>
-    <div class="topBar">
-        <span><img src="images/points.png">0</span>
-    </div>
-    <h1>Level Number</h1>
-    <h2>Write and Upload <br> (given)</h2>
+    <h2 class="sub-heading">WELCOME <br> TO </h2>
+    <h1 class="heading">AppName</h1>
+    <br>
+    <p class="text">This app is focused on helping children with a learning disorder—Dysgraphia develop essential
+        writing skills. By providing gamified practicing to the user, all of the most common symptoms of this disorder
+        are taken into count and helped with.</p>
 
-    <button id="upload">
-        <input type="file" accept=".png, .jpg"><br>
-        <img src="images/cam.png">
-    </button>
-    <button class="button">
-        <p>PLAY
+    <form>
+        <label for="name">Enter your name</label><br>
+        <input type="text" id="name">
+    </form>
+
+    <a href="homepage.html"><button class="button">
+        <p>NEXT
         <span class="material-symbols-outlined">arrow_forward</span></p>
-    </button>
+    </button></a>
 </body>
-<!-- <script src="script.js"></script> -->
+
 </html>

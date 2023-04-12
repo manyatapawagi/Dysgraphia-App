@@ -31,3 +31,15 @@ fetch("http://127.0.0.1:5000/").then(
 
 
     })
+
+    var imgURL = {
+        "imgUrl": "https://i.imgur.com/hVXJKTW.png"
+    };
+    var x = JSON.stringify(imgURL);
+
+    $.ajax({
+        url: "/uploading",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(x)
+    });

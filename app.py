@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, render_template
 from google.cloud import vision
 import math
 from protobuf_to_dict import protobuf_to_dict, dict_to_protobuf
@@ -9,8 +9,11 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 
-@app.route("/", methods=['GET', "POST"])
+@app.route('/', methods=['GET', 'POST'])
+def index():
+    return render_template("gamepage.html");
 
+@app.route('/uploaded', methods=['GET', 'POST'])
 def detect_document_uri():
     
     data = {}
@@ -20,10 +23,12 @@ def detect_document_uri():
         pass
     finally:                
         with app.app_context():        
-
+            output = json.dumps(data)
+            # result = json.loads(output)
+            
             client = vision.ImageAnnotatorClient()
             image = vision.Image()
-            image.source.image_uri = "https://i.imgur.com/hVXJKTW.png"
+            image.source.image_uri = output
 
             response = client.document_text_detection(image=image) 
             json_string = json_format.MessageToJson(response._pb)    
