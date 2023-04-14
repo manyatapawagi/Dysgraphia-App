@@ -5,6 +5,16 @@ body {
     text-align: center;
 }
 
+a {
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .sub-heading {
     font-size: 6vw;
     margin: 10px;

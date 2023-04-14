@@ -24,22 +24,26 @@ fetch("http://127.0.0.1:5000/").then(
             var overallScore = Number(((overallConf + deviationAvPercentage) / 2).toFixed(2));
         }
 
-        var points = math.ceil(math.floor(overallConf)/5);
-        
+        var points = math.ceil(math.floor(overallConf) / 5);
+
 
         document.querySelector("body").innerHTML = "Neatness: " + JSON.stringify(deviationAvPercentage) + "% <br>" + "Handwriting: " + JSON.stringify(overallConf) + "% <br>" + "Overall Score: " + JSON.stringify(overallScore) + "% <br>" + "points scored: " + points;
 
 
     })
 
-    var imgURL = {
-        "imgUrl": "https://i.imgur.com/hVXJKTW.png"
-    };
-    var x = JSON.stringify(imgURL);
+var imgURL = {"url":"https://i.imgur.com/hVXJKTW.png"};
+var x = JSON.stringify(imgURL);
+console.log(x);
 
-    $.ajax({
-        url: "/uploading",
-        type: "POST",
-        contentType: "application/json",
-        data: JSON.stringify(x)
-    });
+// $.ajax({
+//     url:"/uploaded",
+//     type:"POST",
+//     contentType:"application/json",
+//     data: x
+// });
+
+fetch('http://127.0.0.1:5000/uploaded', {
+	method: 'POST',
+	body: x
+});
