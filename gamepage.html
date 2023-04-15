@@ -13,7 +13,11 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.8.0/math.js" integrity="sha512-VW8/i4IZkHxdD8OlqNdF7fGn3ba0+lYqag+Uy4cG6BtJ/LIr8t23s/vls70pQ41UasHH0tL57GQfKDApqc9izA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.8.0/math.js"
+        integrity="sha512-VW8/i4IZkHxdD8OlqNdF7fGn3ba0+lYqag+Uy4cG6BtJ/LIr8t23s/vls70pQ41UasHH0tL57GQfKDApqc9izA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-storage.js"></script>
 </head>
 
 <body>
@@ -24,14 +28,17 @@
     <h2>Write and Upload <br> (given)</h2>
 
     <button id="upload">
-        <input type="file" accept=".png, .jpg"><br>
+        <input type="file" accept=".png, .jpg" id="files"><br>
         <img src="images/cam.png">
     </button>
-    <button class="button">
-        <p onclick="displayPoints()"><a>NEXT
-            <span class="material-symbols-outlined">arrow_forward</span>
-        </a></p> 
+    <button class="button" id="send" onclick="displayPoints()">
+        <p><a>NEXT
+                <span class="material-symbols-outlined">arrow_forward</span>
+            </a></p>
     </button>
+    <p id="uploading"></p>
+    <progress value="0" max="100" id="progress"></progress>
+
 </body>
 <script src="script.js"></script>
 

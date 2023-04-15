@@ -15,7 +15,7 @@ def receiveData():
         URL = dict(request.get_json())["url"]
         client = vision.ImageAnnotatorClient()
         image = vision.Image()
-        image.source.image_uri = URL
+        image.source.image_uri = str(URL)
 
         response = client.document_text_detection(image=image) 
         json_string = json_format.MessageToJson(response._pb)    

@@ -1,8 +1,35 @@
+const firebaseConfig = {
+    apiKey: "AIzaSyCB9yEwIJszbDZuIEOMJOHf2CPSVQnBzrc",
+    authDomain: "uploaded-images-34308.firebaseapp.com",
+    projectId: "uploaded-images-34308",
+    storageBucket: "uploaded-images-34308.appspot.com",
+    messagingSenderId: "255164297862",
+    appId: "1:255164297862:web:dfc02f9ed728e53ca41707",
+    measurementId: "G-DHLLLVW8NZ"
+};
+//(snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+//document.getElementById("progress").value = percentage;
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
 function displayPoints() {
+    const ref = firebase.storage().ref();
+    const file = $('#files').get(0).files[0];
+    const name = (+new Date()) + '-' + file.name;
+    const metadata = { contentType: file.type };
+    const task = ref.child(name).put(file, metadata);
+    var imageURL = "";
+    task
+        .then(snapshot => snapshot.ref.getDownloadURL())
+        .then((url) => {
+            imageURL = url;
+            console.log(imageURL);
+        }).catch(console.error);
+
     fetch('http://127.0.0.1:5000/uploaded', {
         method: 'POST',
         body: JSON.stringify({
-            url: "https://i.imgur.com/hVXJKTW.png"
+            url: imageURL
         }),
         headers: {
             'Content-Type': "application/json",
@@ -41,3 +68,5 @@ function displayPoints() {
 
             });
 }
+
+
