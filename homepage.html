@@ -2,7 +2,7 @@
 
 <head>
     <title>AppName</title>
-    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -39,21 +39,46 @@
         <div class="blue level">14</div>
     </div>
     <div class="LevelLine third">
-        <div class="purple level"><p class="levelNo">15</p></div>
-        <div class="purple level"><p class="levelNo">16</p></div>
-        <div class="purple level"><p class="levelNo">17</p></div>
-        <div class="purple level"><p class="levelNo">18</p></div>
-        <div class="purple level"><p class="levelNo">19</p></div>
-        <div class="purple level"><p class="levelNo">20</p></div>
+        <div class="purple level">
+            <p class="levelNo">15</p>
+        </div>
+        <div class="purple level">
+            <p class="levelNo">16</p>
+        </div>
+        <div class="purple level">
+            <p class="levelNo">17</p>
+        </div>
+        <div class="purple level">
+            <p class="levelNo">18</p>
+        </div>
+        <div class="purple level">
+            <p class="levelNo">19</p>
+        </div>
+        <div class="purple level">
+            <p class="levelNo">20</p>
+        </div>
     </div>
     <div class="LevelLine">
         <div class="golden level">21</div>
     </div>
 
     <a href="gamepage.html"><button class="button">
-        <p>PLAY
-        <span class="material-symbols-outlined">arrow_forward</span></p>
-    </button></a>
+            <p>PLAY
+                <span class="material-symbols-outlined">arrow_forward</span>
+            </p>
+        </button></a>
 </body>
-<!-- <script src="script.js"></script> -->
+<script>
+    var previous_points;
+    if (localStorage.getItem("points") === null) {
+        localStorage.setItem("points", 0);
+        previous_points = localStorage.getItem("points");
+        document.querySelector("#points").innerHTML += previous_points;
+    }
+    else {
+        previous_points = localStorage.getItem("points");
+        document.querySelector("#points").innerHTML = "<img src='images/points.png'>" + previous_points;
+    }
+</script>
+
 </html>
