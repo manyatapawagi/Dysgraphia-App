@@ -13,10 +13,10 @@ CORS(app)
 def receiveData():
     try:
         URL = dict(request.get_json())["url"]
+        # print(type(URL))
         client = vision.ImageAnnotatorClient()
         image = vision.Image()
         image.source.image_uri = str(URL)
-
         response = client.document_text_detection(image=image) 
         json_string = json_format.MessageToJson(response._pb)    
         responseObj = json.loads(json_string)
@@ -78,6 +78,7 @@ def receiveData():
         return dataJson
     except:
         return "{}"
+        
 
 # def detect_document_uri():
 
