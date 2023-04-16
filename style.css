@@ -65,11 +65,11 @@ input:focus {
     font-family: 'IM Fell Great Primer';
     border-radius: 10px;
     box-shadow: inset 2px 1px 9px 1px white;
-    transition: .5s all;
+    transition: .2s all;
 }
 
 .button:hover {
-    transform: scale(1.2);
+    transform: scale(1.05);
 }
 
 .button:active {
@@ -227,4 +227,27 @@ input:focus {
 
 #upload img {
     width: 100px;
+}
+
+#result {
+    width: 60vw;
+    height: 85vh;
+    background: lightgrey;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+    overflow: auto;
+    flex-direction: column;
+    justify-content: space-between;
+    display: flex;
+}
+
+#progress {
+    width: 100%;
+    border-radius: 0px;
+    position: absolute;
+    left: 0;
+    top: 0;
 }
