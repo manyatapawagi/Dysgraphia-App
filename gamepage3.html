@@ -1,0 +1,53 @@
+<html>
+
+<head>
+    <title>AppName</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=IM+Fell+Great+Primer&family=Inconsolata:wght@500&family=Jockey+One&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.8.0/math.js"
+        integrity="sha512-VW8/i4IZkHxdD8OlqNdF7fGn3ba0+lYqag+Uy4cG6BtJ/LIr8t23s/vls70pQ41UasHH0tL57GQfKDApqc9izA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-storage.js"></script>
+</head>
+
+<body>
+    <div class="topBar">
+        <span id="points"><img src="images/points.png"></span>
+    </div>
+    <h1>Level 3</h1>
+    <h2>Write and Upload <br> <span id="assigned"></span></h2>
+
+    <button id="upload">
+        <input type="file" accept=".png, .jpg" id="files"><br>
+        <img src="images/cam.png">
+    </button>
+    <button class="button" id="send" onclick="displayPoints()">
+        <p>NEXT
+                <span class="material-symbols-outlined">arrow_forward</span>
+            </p>
+    </button>
+
+    <div id="result" style="display: none;">
+        <p id="uploading">Uploading...</p>
+        <canvas id="myChart"></canvas>
+    </div>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="script.js"></script>
+<script>
+    var questions = ["She doesn't like reading books", "We go to buy the groceries once a week", "Today we will be cleaning our house after long", "Anne and Georgia are very good friends"];
+    var picked_question = questions[Math.floor(Math.random()*questions.length)];
+    document.querySelector("#assigned").innerHTML = picked_question;
+</script>
+</html>

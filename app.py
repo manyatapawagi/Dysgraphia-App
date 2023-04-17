@@ -78,18 +78,6 @@ def receiveData():
         return dataJson
     except:
         return "{}"
-        
-
-# def detect_document_uri():
-
-#     try:
-#         data = dict(request.get_json())
-#     except:
-#         pass
-#     finally:                
-#         with app.app_context():              
-            
-#     return dataJson
   
 if __name__ == '__main__':
     app.debug = True

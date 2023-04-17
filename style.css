@@ -117,7 +117,6 @@ input:focus {
 .LevelLine {
     width: calc(100% - 10px);
     margin: 10px 5px;
-    border-bottom: 3px solid #FFD873;
     display: grid;
     grid-template-columns: auto auto auto auto auto auto auto;
     text-align: center;
@@ -137,6 +136,11 @@ input:focus {
     cursor: pointer;
 }
 
+.level a {
+    width: 100%;
+    height: 100%;
+}
+
 .level:after {
     content: "";
     position: absolute;
@@ -150,45 +154,18 @@ input:focus {
     z-index: 20;
 }
 
-.level1:after {
+.level2.unlocked:after, .level3.unlocked:after, .level4.unlocked:after, .level5.unlocked:after {
     display: none;
 }
 
-.purple.level:after {
-    right: -35px;
+.level1:after {
+    display: none;
 }
 
 .green {
     width: 40px;
     height: 40px;
     background-color: #60DE13;
-}
-
-.blue {
-    width: 40px;
-    height: 40px;
-    background-color: #37DBFF;
-    border-radius: 50%;
-}
-
-.LevelLine.third {
-    grid-template-columns: auto auto auto;
-}
-
-.purple {
-    width: 0;
-	height: 0;
-	border-left: 40px solid transparent;
-	border-right: 40px solid transparent;
-	border-bottom: 50px solid #D06DFF;
-    position: relative;
-}
-
-.purple .levelNo {
-    margin: 0;
-    padding: 0px;
-    position: absolute;
-    bottom: -50px;
 }
 
 .golden {
@@ -207,18 +184,6 @@ input:focus {
     right: -5px;
     top: 5px;
 }
-
-@media only screen and (max-width: 450px) {
-    .LevelLine {
-        grid-template-columns: auto auto auto auto auto;
-    }
-  }
-
-@media only screen and (max-width: 300px) {
-    .LevelLine {
-        grid-template-columns: auto auto auto auto;
-    }
-  }
 
 #upload {
     margin: 10px auto;
@@ -250,4 +215,10 @@ input:focus {
     position: absolute;
     left: 0;
     top: 0;
+}
+
+#namedisplay {
+    width: fit-content;
+    float: right;
+    padding: 0px 5px;
 }

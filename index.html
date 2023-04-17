@@ -27,7 +27,7 @@
         <input type="text" id="name">
     </form>
 
-    <a href="homepage.html"><button class="button">
+    <a href="homepage.html" onclick="saveName()"><button class="button">
             <p>NEXT
                 <span class="material-symbols-outlined">arrow_forward</span>
             </p>
@@ -43,6 +43,10 @@
     else {
         previous_points = localStorage.getItem("points");
         document.querySelector("#points").innerHTML = "<img src='images/points.png'>" + previous_points;
+    }
+
+    function saveName() {
+        localStorage.setItem("name", document.querySelector("#name").value);
     }
 </script>
 

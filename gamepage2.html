@@ -24,8 +24,8 @@
     <div class="topBar">
         <span id="points"><img src="images/points.png"></span>
     </div>
-    <h1>Level Number</h1>
-    <h2>Write and Upload <br> (given)</h2>
+    <h1>Level 2</h1>
+    <h2>Write and Upload <br> <span id="assigned"></span></h2>
 
     <button id="upload">
         <input type="file" accept=".png, .jpg" id="files"><br>
@@ -45,5 +45,9 @@
 </body>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="script.js"></script>
-
+<script>
+    var questions = ["A cat is sleeping", "I love to write poems", "The boy's name is ben", "The teacher taught the children"];
+    var picked_question = questions[Math.floor(Math.random()*questions.length)];
+    document.querySelector("#assigned").innerHTML = picked_question;
+</script>
 </html>

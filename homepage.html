@@ -7,6 +7,7 @@
     <link rel="shortcut icon" href="">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <link
         href="https://fonts.googleapis.com/css2?family=IM+Fell+Great+Primer&family=Inconsolata:wght@500&family=Jockey+One&display=swap"
         rel="stylesheet">
@@ -16,69 +17,46 @@
 
 <body>
     <div class="topBar">
-        <span><img src="images/points.png">0</span>
+        <span id="points"><img src="images/points.png">0</span>
+        <span id="namedisplay">name</span>
     </div>
 
     <div class="LevelLine">
-        <div class="green level level1">1</div>
-        <div class="green level">2</div>
-        <div class="green level">3</div>
-        <div class="green level">4</div>
-        <div class="green level">5</div>
-        <div class="green level">6</div>
-        <div class="green level">7</div>
-    </div>
-
-    <div class="LevelLine">
-        <div class="blue level">8</div>
-        <div class="blue level">9</div>
-        <div class="blue level">10</div>
-        <div class="blue level">11</div>
-        <div class="blue level">12</div>
-        <div class="blue level">13</div>
-        <div class="blue level">14</div>
-    </div>
-    <div class="LevelLine third">
-        <div class="purple level">
-            <p class="levelNo">15</p>
-        </div>
-        <div class="purple level">
-            <p class="levelNo">16</p>
-        </div>
-        <div class="purple level">
-            <p class="levelNo">17</p>
-        </div>
-        <div class="purple level">
-            <p class="levelNo">18</p>
-        </div>
-        <div class="purple level">
-            <p class="levelNo">19</p>
-        </div>
-        <div class="purple level">
-            <p class="levelNo">20</p>
-        </div>
+        <div class="green level level1"><a href="gamepage1.html">1</a></div>
+        <div class="green level level2"><a href="gamepage2.html">2</a></div>
+        <div class="green level level3"><a href="gamepage3.html">3</a></div>
+        <div class="green level level4"><a href="gamepage4.html">4</a></div>
     </div>
     <div class="LevelLine">
-        <div class="golden level">21</div>
+        <div class="golden level"><a href="gamepage5.html">5</a></div>
     </div>
-
-    <a href="gamepage.html"><button class="button">
-            <p>PLAY
-                <span class="material-symbols-outlined">arrow_forward</span>
-            </p>
-        </button></a>
 </body>
 <script>
+    document.querySelector("#namedisplay").innerHTML = localStorage.getItem("name");
     var previous_points;
     if (localStorage.getItem("points") === null) {
         localStorage.setItem("points", 0);
         previous_points = localStorage.getItem("points");
-        document.querySelector("#points").innerHTML += previous_points;
+        document.querySelector("#points").innerHTML = "<img src='images/points.png'>" + previous_points;;
     }
     else {
         previous_points = localStorage.getItem("points");
         document.querySelector("#points").innerHTML = "<img src='images/points.png'>" + previous_points;
     }
+
+    if (previous_points == 60) {
+        $('.level2').addClass('unlocked'); 
+    }
+    if (previous_points == 120) {
+        $('.level3').addClass('unlocked'); 
+    }
+    if (previous_points == 200) {
+        $('.level4').addClass('unlocked'); 
+    }
+    if (previous_points == 300) {
+        $('.level5').addClass('unlocked'); 
+    }
+
 </script>
 
 </html>
