@@ -23,6 +23,7 @@
 <body>
     <div class="topBar">
         <span id="points"><img src="images/points.png"></span>
+        <span id="namedisplay">name</span>
     </div>
     <h1>Level 5</h1>
     <h2>Write and Upload <br> <span id="assigned"></span></h2>
@@ -46,6 +47,7 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="script.js"></script>
 <script>
+    document.querySelector("#namedisplay").innerHTML = localStorage.getItem("name");
     var questions = ["Education can be defined as the teaching and learning of specific skills, and the imparting of knowledge, judgment and wisdom, and is something broader than the societal institution of education we often speak of. Many educationalists consider it a weak and woolly field, too far removed from the practical applications of the real world to be useful."];
     var picked_question = questions[Math.floor(Math.random() * questions.length)];
     document.querySelector("#assigned").innerHTML = picked_question;

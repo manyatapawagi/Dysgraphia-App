@@ -23,6 +23,7 @@
 <body>
     <div class="topBar">
         <span id="points"><img src="images/points.png"></span>
+        <span id="namedisplay">name</span>
     </div>
     <h1>Level 3</h1>
     <h2>Write and Upload <br> <span id="assigned"></span></h2>
@@ -46,6 +47,7 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="script.js"></script>
 <script>
+    document.querySelector("#namedisplay").innerHTML = localStorage.getItem("name");
     var questions = ["She doesn't like reading books", "We go to buy the groceries once a week", "Today we will be cleaning our house after long", "Anne and Georgia are very good friends"];
     var picked_question = questions[Math.floor(Math.random()*questions.length)];
     document.querySelector("#assigned").innerHTML = picked_question;
