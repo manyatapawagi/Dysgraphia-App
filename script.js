@@ -120,3 +120,30 @@ function plotGraph(data) {
         }
     });
 }
+
+
+//the following will generate random words and append them to the questions array, making the game more random and non repetetive.
+const GeminiAPI = require('gemini'); // run npm install gemini for local machine
+
+const difficulty = 'medium'; // change accordingly
+
+async function generateRandomWords() {
+  const gemini = new GeminiAPI();
+
+  try {
+    const words = await gemini.getWords({ difficulty, language: 'en' });
+
+    for (const word of words) {
+      questions.push(word);
+    }
+
+    console.log('Updated questions array with random medium-difficulty words:', questions);
+  } catch (error) {
+    console.error('Error fetching words:', error);
+  }
+}
+
+generateRandomWords();
+
+
+//warning, run tests locally I've just appended the function to this code, run tests locally make sure there are no conflicts.
